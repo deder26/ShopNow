@@ -57,6 +57,49 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 <body>
 <style>
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: #ebebeb;
+  color: #888888;
+  padding: 10px;
+  font-size: 12px;
+  
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown1 {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown1-content1 {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown1-content1 a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown1-content1 a:hover {background-color: #ebebeb;}
+
+/* Show the dropdown menu on hover */
+.dropdown1:hover .dropdown1-content1 {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown1:hover .dropbtn {background-color: #ebebeb;}
+
 p {
     padding: 5px;
 }
@@ -99,28 +142,21 @@ p {
 							</li>
 							@endif
 						    @else
-							<li class="nav-item dropdown"><a id="navbarDropdown"
-								class="nav-link dropdown-toggle" href="{{route('dashboard')}}"
-								role="button" data-toggle="dropdown" aria-haspopup="true"
-								aria-expanded="false" v-pre> {{ Auth::user()->name }} <span
-									class="caret"></span>
-							</a>
-
-								<div class="dropdown-menu dropdown-menu-right"
-									aria-labelledby="navbarDropdown">
-
-									<a class="dropdown-item" href="{{ route('dashboard') }}"> <font
-										color="black"><p > {{ __('Dashboard') }}</p> </font>
-									</a> <a class="dropdown-item" href="{{ route('logout') }}"
+						<div class="dropdown1"  style="padding:5px">
+  						<strong style="padding-left:3px;color:white">{{Auth::user()->name}}</strong>
+  						
+  					<div class="dropdown1-content1">
+    					<a href="{{route('dashboard')}}">DashBoard</a>
+    					<a href="{{ route('logout') }}"
 										onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-										<font color="black"> {{ __('Logout') }} </font>
+										 SignOut
 									</a>
 
 									<form id="logout-form" action="{{ route('logout') }}"
 										method="POST" style="display: none;">@csrf</form>
-
-								</div></li>
+ 					 </div>
+				</div>
 						 @endguest
 						</ul>
 					</div>
